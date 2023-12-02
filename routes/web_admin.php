@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\Customer\OrderController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,7 +12,3 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/{slug}', [OrderController::class, 'shopDetail'])->name('shop_detail');
-
-
