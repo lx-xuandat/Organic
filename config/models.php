@@ -342,7 +342,7 @@ return [
         */
 
         'model_names' => [
-
+            'strings' => 'Str',
         ],
 
         /*
