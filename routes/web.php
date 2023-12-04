@@ -20,3 +20,7 @@ Route::get('/csrf-token', function () {
 
 Route::get('/product/{slug}', [OrderController::class, 'shopDetail'])->name('shop_detail');
 Route::post('/add-to-cart', [OrderController::class, 'addToCart'])->name('addToCart')->middleware('auth:web');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
