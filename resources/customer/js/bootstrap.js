@@ -1,4 +1,8 @@
 import _ from 'lodash';
+import 'bootstrap'
+import $ from 'jquery';
+
+window.$ = $;
 window._ = _;
 
 /**

@@ -16,3 +16,12 @@ yarn-error.log
 /.fleet
 /.idea
 /.vscode
+public/blog-details.html
+public/blog.html
+public/checkout.html
+public/contact.html
+public/index.html
+public/main.html
+public/shop-details.html
+public/shop-grid.html
+public/shoping-cart.html

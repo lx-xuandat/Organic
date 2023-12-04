@@ -41,4 +41,15 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    public function customer()
+    {
+        $relation = $this->hasOne(Customer::class, 'id', 'model_id');
+
+        $relation->getQuery()
+            ->join('users', 'customers.id', '=', 'users.model_id')
+            ->where('users.model_type', 'customer')
+            ->select('customers.*');
+
+        return $relation;
+    }
 }

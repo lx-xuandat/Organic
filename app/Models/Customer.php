@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class Customer
- * 
+ *
  * @property int $id
  * @property string|null $company
  * @property string|null $last_name
@@ -30,7 +30,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string|null $web_page
  * @property string|null $notes
  * @property string|null $attachments
- * 
+ *
  * @property Collection|Order[] $orders
  *
  * @package App\Models

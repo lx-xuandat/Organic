@@ -14,6 +14,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/{slug}', [OrderController::class, 'shopDetail'])->name('shop_detail');
+Route::get('/csrf-token', function () {
+    return response()->json(csrf_token());
+});
 
-
+Route::get('/product/{slug}', [OrderController::class, 'shopDetail'])->name('shop_detail');
+Route::post('/add-to-cart', [OrderController::class, 'addToCart'])->name('addToCart')->middleware('auth:web');
