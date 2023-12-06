@@ -1,8 +1,8 @@
-@extends('organic.inc.MasterLayout')
+@extends('organic.layouts.MasterLayout')
 
 @section('main-content')
     <!-- Breadcrumb Section Begin -->
-    @include('organic.inc.Breadcrumb')
+    @include('organic.layouts.Breadcrumb')
     <!-- Breadcrumb Section End -->
 
     <!-- Product Details Section Begin -->
@@ -151,6 +151,6 @@
     <!-- Product Details Section End -->
 
     <!-- Related Product Section Begin -->
-    @include('organic.inc.RelatedProduct')
+    @include('organic.layouts.RelatedProduct')
     <!-- Related Product Section End -->
 @endsection
