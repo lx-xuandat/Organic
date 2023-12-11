@@ -12,6 +12,15 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+    protected $with = [
+        'info',
+    ];
+
+    protected $appends = [
+        'is_customer',
+        'is_employee',
+    ];
+
     /**
      * The attributes that are mass assignable.
      *
@@ -43,15 +52,43 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-    public function customer()
+
+    public function info()
     {
-        $relation = $this->hasOne(Customer::class, 'id', 'model_id');
+        if ($this->model_type == 'customer') {
 
-        $relation->getQuery()
-            ->join('users', 'customers.id', '=', 'users.model_id')
-            ->where('users.model_type', 'customer')
-            ->select('customers.*');
+            $relation = $this->hasOne(Customer::class, 'id', 'model_id');
 
-        return $relation;
+            $relation->getQuery()
+                ->join('users', 'customers.id', '=', 'users.model_id')
+                ->where('users.model_type', 'customer')
+                ->select('customers.*');
+
+            return $relation;
+        } else {
+            $relation = $this->hasOne(Employee::class, 'id', 'model_id');
+
+            $relation->getQuery()
+                ->join('users', 'employees.id', '=', 'users.model_id')
+                ->where('users.model_type', 'employee')
+                ->select('employees.*');
+
+            return $relation;
+        }
+    }
+
+    public function hasRole($role)
+    {
+        return $this->model_type === $role;
+    }
+
+    public function getIsCustomerAttribute()
+    {
+        return $this->model_type === 'customer';
+    }
+
+    public function getIsEmployeeAttribute()
+    {
+        return $this->model_type === 'employee';
     }
 }

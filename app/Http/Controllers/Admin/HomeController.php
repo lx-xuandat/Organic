@@ -1,9 +1,8 @@
 <?php
 
-namespace App\Http\Controllers\Customer;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Str;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -15,7 +14,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        // $this->middleware('role:customer');
+        $this->middleware('auth');
     }
 
     /**
@@ -25,11 +24,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $style = [
-            'heroNormal' => 'hero_normal',
-        ];
-
-
         return view('organic.home');
     }
 }

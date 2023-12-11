@@ -1,3 +1,7 @@
+@php
+    $css = app('css');
+@endphp
+
 <!DOCTYPE html>
 <html lang="vi">
 
@@ -171,7 +175,7 @@
     <!-- Header Section End -->
 
     <!-- Hero Section Begin -->
-    <section class="hero hero-normal">
+    <section class="hero {{ $css->string_data }}">
         <div class="container">
             <div class="row">
                 <div class="col-lg-3">
@@ -217,6 +221,8 @@
                             </div>
                         </div>
                     </div>
+
+                    @yield('banner_hero', null)
                 </div>
             </div>
         </div>
@@ -293,7 +299,8 @@
                                 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                             </p>
                         </div>
-                        <div class="footer__copyright__payment"><img src="/img/payment-item.png" alt=""></div>
+                        <div class="footer__copyright__payment"><img src="/img/payment-item.png" alt="">
+                        </div>
                     </div>
                 </div>
             </div>

@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Services\OrderService;
 use App\Services\ProductService;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
 {
@@ -20,12 +19,7 @@ class OrderController extends Controller
 
     public function shopDetail(Request $request, string|int $slug)
     {
-        if (Auth::attempt([
-            'email' => 'datlx',
-            'password' => 'datlx'
-        ])) {
-            info('datlx');
-        }
+        // info($request->headers?->get('referer'));
 
         $product = $this->productService->getBySlug($slug);
 
@@ -37,9 +31,10 @@ class OrderController extends Controller
     public function addToCart(Request $request)
     {
         /**
-         * @var \App\Models\Customer $customer
+         * @var \App\Models\User $customer
          */
-        $customer = auth()->user()->customer;
+        $customer = auth()->user();
+
         $this->orderService->addToCart(
             $customer,
             $request->all()
