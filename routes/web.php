@@ -1,7 +1,6 @@
 <?php
 
 use App\Http\Controllers\Customer\HomeController;
-use App\Http\Controllers\Customer\OrderController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -20,9 +19,7 @@ Route::get('/csrf-token', function () {
     return response()->json(csrf_token());
 });
 
-Route::middleware(['role:customer'])->group(function () {
-    Route::get('/product/{slug}', [OrderController::class, 'shopDetail'])->name('shop_detail');
-    Route::post('/add-to-cart', [OrderController::class, 'addToCart'])->name('addToCart')->middleware('auth:web');
+Route::middleware(['auth:web'])->group(function () {
 });
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');

@@ -5,7 +5,6 @@
 @endsection
 
 @section('main-content')
-    <!-- Breadcrumb Section Begin -->
-    <!-- Breadcrumb Section End -->
-
+    @include('organic.layouts.categories_section')
+    @include('organic.layouts.featured_section')
 @endsection

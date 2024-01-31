@@ -7,11 +7,10 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class Employee
- * 
+ *
  * @property int $id
  * @property string|null $company
  * @property string|null $last_name
@@ -30,14 +29,14 @@ use Illuminate\Database\Eloquent\Model;
  * @property string|null $web_page
  * @property string|null $notes
  * @property string|null $attachments
- * 
+ *
  * @property Collection|Privilege[] $privileges
  * @property Collection|Order[] $orders
  * @property Collection|PurchaseOrder[] $purchase_orders
  *
  * @package App\Models
  */
-class Employee extends Model
+class Employee extends User
 {
 	protected $table = 'employees';
 	public $timestamps = false;
@@ -59,7 +58,10 @@ class Employee extends Model
 		'country_region',
 		'web_page',
 		'notes',
-		'attachments'
+		'attachments',
+        'name',
+        'email',
+        'password',
 	];
 
 	public function privileges()

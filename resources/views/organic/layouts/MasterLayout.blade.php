@@ -1,5 +1,5 @@
 @php
-    $css = app('css');
+    $route_name = $route_name ?? 'index';
 @endphp
 
 <!DOCTYPE html>
@@ -59,7 +59,9 @@
                 </ul>
             </div>
             <div class="header__top__right__auth">
+                @guest
                 <a href="#"><i class="fa fa-user"></i> Login</a>
+                @endguest
             </div>
         </div>
         <nav class="humberger__menu__nav mobile-menu">
@@ -125,7 +127,12 @@
                                 </ul>
                             </div>
                             <div class="header__top__right__auth">
+                                @guest
                                 <a href="#"><i class="fa fa-user"></i> Login</a>
+                                @endguest
+                                @auth
+                                <a href="#"><i class="fa fa-user"></i> {{ auth()->user()->name }}</a>
+                                @endauth
                             </div>
                         </div>
                     </div>
@@ -174,8 +181,9 @@
     </header>
     <!-- Header Section End -->
 
+
     <!-- Hero Section Begin -->
-    <section class="hero {{ $css->string_data }}">
+    <section class="hero {{ config("css.$route_name.hero_normal") }}">
         <div class="container">
             <div class="row">
                 <div class="col-lg-3">

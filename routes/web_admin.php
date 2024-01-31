@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\Admin\HomeController;
+use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\SetupController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,7 +16,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [HomeController::class, 'index'])->name('index');
 
 Route::get('login', [App\Http\Controllers\Admin\Auth\LoginController::class, 'showLoginForm'])->name('login');
 Route::post('login', [App\Http\Controllers\Admin\Auth\LoginController::class, 'login'])->name('post_login');
@@ -27,3 +28,10 @@ Route::post('password/reset', [App\Http\Controllers\Admin\Auth\ResetPasswordCont
 Route::get('password/reset/{token}', [App\Http\Controllers\Admin\Auth\ResetPasswordController::class, 'showResetForm'])->name('password.reset');
 Route::get('register', [App\Http\Controllers\Admin\Auth\RegisterController::class, 'showRegistrationForm'])->name('register');
 Route::post('register', [App\Http\Controllers\Admin\Auth\RegisterController::class, 'register'])->name('post_register');
+
+Route::middleware(['auth:admin'])->group(function () {
+    Route::get('/', [HomeController::class, 'index'])->name('index');
+    Route::get('/products', [ProductController::class, 'index'])->name('product.index');
+
+    Route::resource('/setup', SetupController::class);
+});
