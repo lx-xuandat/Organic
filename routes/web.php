@@ -1,7 +1,7 @@
 <?php
 
-use App\Http\Controllers\Customer\HomeController;
-use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Customer\ShopController;
+use App\Http\Controllers\Customer\WebsiteController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,10 +22,10 @@ Route::get('/csrf-token', function () {
 Route::middleware(['auth:web'])->group(function () {
 });
 
-Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/', [ShopController::class, 'home'])->name('home');
+Route::get('/home', [ShopController::class, 'home']);
+Route::get('/index.html', [ShopController::class, 'home']);
 
-
-Route::get('/', [HomeController::class, 'index'])->name('index');
 Route::get('login', [App\Http\Controllers\Customer\Auth\LoginController::class, 'showLoginForm'])->name('login');
 Route::post('login', [App\Http\Controllers\Customer\Auth\LoginController::class, 'login'])->name('post_login');
 Route::post('logout', [App\Http\Controllers\Customer\Auth\LoginController::class, 'logout'])->name('logout');
@@ -37,3 +37,10 @@ Route::post('password/reset', [App\Http\Controllers\Customer\Auth\ResetPasswordC
 Route::get('password/reset/{token}', [App\Http\Controllers\Customer\Auth\ResetPasswordController::class, 'showResetForm'])->name('password.reset');
 Route::get('register', [App\Http\Controllers\Customer\Auth\RegisterController::class, 'showRegistrationForm'])->name('register');
 Route::post('register', [App\Http\Controllers\Customer\Auth\RegisterController::class, 'register'])->name('post_register');
+Route::get('website/language/{lang}', [WebsiteController::class, 'language'])->name('website.language');
+
+Route::middleware('auth:web')->group(function () {
+    Route::get('shop-grid.html', [ShopController::class, 'shopGrid'])->name('shop-grid');
+
+    Route::get('account', [ShopController::class, 'shopGrid'])->name('account'); // TODO
+});

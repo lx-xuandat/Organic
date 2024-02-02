@@ -42,27 +42,10 @@
             <a href="#"><img src="/img/logo.png" alt=""></a>
         </div>
         <div class="humberger__menu__cart">
-            <ul>
-                <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
-                <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
-            </ul>
-            <div class="header__cart__price">item: <span>$150.00</span></div>
+            @include('organic.widgets.menu_cart')
         </div>
         <div class="humberger__menu__widget">
-            <div class="header__top__right__language">
-                <img src="/img/language.png" alt="">
-                <div>English</div>
-                <span class="arrow_carrot-down"></span>
-                <ul>
-                    <li><a href="#">Spanis</a></li>
-                    <li><a href="#">English</a></li>
-                </ul>
-            </div>
-            <div class="header__top__right__auth">
-                @guest
-                <a href="#"><i class="fa fa-user"></i> Login</a>
-                @endguest
-            </div>
+            @include('organic.widgets.header__top__right')
         </div>
         <nav class="humberger__menu__nav mobile-menu">
             <ul>
@@ -89,8 +72,8 @@
         </div>
         <div class="humberger__menu__contact">
             <ul>
-                <li><i class="fa fa-envelope"></i> hello@colorlib.com</li>
-                <li>Free Shipping for all Order of $99</li>
+                <li><i class="fa fa-envelope"></i> {{ $Store->email }}</li>
+                <li>{{ $Store->msg_email }}</li>
             </ul>
         </div>
     </div>
@@ -104,36 +87,17 @@
                     <div class="col-lg-6">
                         <div class="header__top__left">
                             <ul>
-                                <li><i class="fa fa-envelope"></i> hello@colorlib.com</li>
-                                <li>Free Shipping for all Order of $99</li>
+                                <li><i class="fa fa-envelope"></i> {{ $Store->email }}</li>
+                                <li>{{ $Store->msg_email }}</li>
                             </ul>
                         </div>
                     </div>
                     <div class="col-lg-6">
                         <div class="header__top__right">
                             <div class="header__top__right__social">
-                                <a href="#"><i class="fa fa-facebook"></i></a>
-                                <a href="#"><i class="fa fa-twitter"></i></a>
-                                <a href="#"><i class="fa fa-linkedin"></i></a>
-                                <a href="#"><i class="fa fa-pinterest-p"></i></a>
+                                @include('organic.widgets.socials')
                             </div>
-                            <div class="header__top__right__language">
-                                <img src="/img/language.png" alt="">
-                                <div>English</div>
-                                <span class="arrow_carrot-down"></span>
-                                <ul>
-                                    <li><a href="#">Spanis</a></li>
-                                    <li><a href="#">English</a></li>
-                                </ul>
-                            </div>
-                            <div class="header__top__right__auth">
-                                @guest
-                                <a href="#"><i class="fa fa-user"></i> Login</a>
-                                @endguest
-                                @auth
-                                <a href="#"><i class="fa fa-user"></i> {{ auth()->user()->name }}</a>
-                                @endauth
-                            </div>
+                            @include('organic.widgets.header__top__right')
                         </div>
                     </div>
                 </div>
@@ -166,11 +130,7 @@
                 </div>
                 <div class="col-lg-3">
                     <div class="header__cart">
-                        <ul>
-                            <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
-                            <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
-                        </ul>
-                        <div class="header__cart__price">item: <span>$150.00</span></div>
+                        @include('organic.widgets.menu_cart')
                     </div>
                 </div>
             </div>
@@ -224,8 +184,8 @@
                                 <i class="fa fa-phone"></i>
                             </div>
                             <div class="hero__search__phone__text">
-                                <h5>+65 11.188.888</h5>
-                                <span>support 24/7 time</span>
+                                <h5>{{ $Store->phone }}</h5>
+                                <span>{{ $Store->msg_phone }}</span>
                             </div>
                         </div>
                     </div>
@@ -249,9 +209,9 @@
                             <a href="./index.html"><img src="/img/logo.png" alt=""></a>
                         </div>
                         <ul>
-                            <li>Address: 60-49 Road 11378 New York</li>
-                            <li>Phone: +65 11.188.888</li>
-                            <li>Email: hello@colorlib.com</li>
+                            <li>Address: {{ $Store->address }}</li>
+                            <li>Phone: {{ $Store->phone }}</li>
+                            <li>Email: {{ $Store->email }}</li>
                         </ul>
                     </div>
                 </div>
@@ -285,10 +245,7 @@
                             <button type="submit" class="site-btn">Subscribe</button>
                         </form>
                         <div class="footer__widget__social">
-                            <a href="#"><i class="fa fa-facebook"></i></a>
-                            <a href="#"><i class="fa fa-instagram"></i></a>
-                            <a href="#"><i class="fa fa-twitter"></i></a>
-                            <a href="#"><i class="fa fa-pinterest"></i></a>
+                            @include('organic.widgets.socials')
                         </div>
                     </div>
                 </div>

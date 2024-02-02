@@ -16,6 +16,10 @@ class ViewServiceProvider extends ServiceProvider
         $this->app->singleton('css', function () {
             return config('css');
         });
+
+        $this->app->singleton('Store', function () {
+            return \App\Models\Setup::first();
+        });
     }
 
     /**
@@ -26,5 +30,6 @@ class ViewServiceProvider extends ServiceProvider
     public function boot()
     {
         \Illuminate\Support\Facades\View::share('css', app('css'));
+        \Illuminate\Support\Facades\View::share('Store', app('Store'));
     }
 }
