@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Str;
 use Illuminate\Http\Request;
 
-class HomeController extends Controller
+class ShopController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -18,12 +18,16 @@ class HomeController extends Controller
         // $this->middleware('role:customer');
     }
 
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
-    public function index()
+    public function home()
+    {
+        $style = [
+            'heroNormal' => 'hero_normal',
+        ];
+
+        return view('organic.home');
+    }
+
+    public function shopGrid()
     {
         $style = [
             'heroNormal' => 'hero_normal',
@@ -31,5 +35,10 @@ class HomeController extends Controller
 
 
         return view('organic.home');
+    }
+
+    public function shopDetails()
+    {
+        return view('organic.shop_grid');
     }
 }

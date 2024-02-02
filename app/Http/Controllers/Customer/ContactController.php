@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Customer;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class ShopGridController extends Controller
+class ContactController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -14,5 +14,9 @@ class ShopGridController extends Controller
      */
     public function __construct()
     {
+    }
+
+    public function getContact(Request $request){
+
     }
 }
