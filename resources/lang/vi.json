@@ -1,5 +1,25 @@
 {
+    "category_create": "Tạo nhóm mới",
+    "category_name": "Tên nhóm",
+    "home": "Trang chủ",
+    "dashboard" : "Tổng quan",
+    "products" : "Hàng hóa",
+    "new": "Thêm mới",
+    "search": "Tìm kiếm",
+    "code_auto": "Mã tự động",
     "vi": "Tiếng Việt",
-    "en": "English",
-    "login": "Đăng nhập"
+    "en": "Tiếng Anh",
+    "login": "Đăng nhập",
+    "product": "Hàng hóa",
+    "category": "Danh mục",
+    "ma_hang": "Mã hàng",
+    "ten_hang": "Tên hàng",
+    "nhom_hang": "Nhóm hàng",
+    "gia_von": "Giá vốn",
+    "gia_ban": "Giá bán",
+    "ton_kho": "Tồn kho",
+    "trong_luong": "Trọng lượng",
+    "select_parent": "Chọn nhóm cha",
+    "skip": "Bỏ qua",
+    "save": "Lưu"
 }

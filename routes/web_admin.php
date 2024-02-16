@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\SetupController;
@@ -29,9 +30,10 @@ Route::get('password/reset/{token}', [App\Http\Controllers\Admin\Auth\ResetPassw
 Route::get('register', [App\Http\Controllers\Admin\Auth\RegisterController::class, 'showRegistrationForm'])->name('register');
 Route::post('register', [App\Http\Controllers\Admin\Auth\RegisterController::class, 'register'])->name('post_register');
 
-Route::middleware(['auth:admin'])->group(function () {
+Route::middleware(['auth:admin', 'share_data_to_view_admin'])->group(function () {
     Route::get('/', [HomeController::class, 'index'])->name('index');
     Route::get('/products', [ProductController::class, 'index'])->name('product.index');
+    Route::apiResource('category', CategoryController::class);
 
     Route::resource('/setup', SetupController::class);
 });
